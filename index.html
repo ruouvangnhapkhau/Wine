@@ -8,21 +8,26 @@
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: #0d0d0d;
+    font-family: Arial, sans-serif;
+    background: #007bff; /* Blue background */
     color: white;
 }
 
 .header {
-    background: #000;
+    background: #003366; /* Dark Blue header */
     padding: 15px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
-    color: gold;
+    color: white;
 }
 
-.section { display: none; padding: 15px; }
+.section { 
+    display: none; 
+    padding: 15px;
+    background-color: #ffffff; /* White background for sections */
+    color: #000; /* Black text for better readability */
+}
 .active { display: block; }
 
 .banner {
@@ -31,9 +36,10 @@ body {
     padding: 50px 15px;
     border-radius: 12px;
     text-align: center;
+    color: white;
 }
 
-.banner h2 { color: gold; }
+.banner h2 { color: white; }
 
 /* PRODUCTS */
 .products {
@@ -43,7 +49,7 @@ body {
 }
 
 .product {
-    background: #1a1a1a;
+    background: #f1f1f1; /* Light grey background for products */
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
@@ -58,7 +64,7 @@ body {
 .product p { margin: 5px; }
 
 .price {
-    color: gold;
+    color: #007bff; /* Blue color for price */
     font-weight: bold;
 }
 
@@ -80,7 +86,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: #000;
+    background: #003366; /* Dark Blue footer */
     display: flex;
     justify-content: space-around;
     padding: 10px 0;
@@ -94,7 +100,7 @@ body {
 }
 
 .footer button:hover {
-    color: gold;
+    color: #007bff; /* Blue hover effect */
 }
 </style>
 </head>
@@ -225,4 +231,4 @@ function buy() {
 </script>
 
 </body>
-</html>
+                </html>
