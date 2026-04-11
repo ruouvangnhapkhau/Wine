@@ -13,7 +13,6 @@ body {
     color: white;
 }
 
-/* Header */
 .header {
     background: #000;
     padding: 15px;
@@ -23,11 +22,9 @@ body {
     color: gold;
 }
 
-/* Section */
 .section { display: none; padding: 15px; }
 .active { display: block; }
 
-/* Banner */
 .banner {
     background: url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03');
     background-size: cover;
@@ -36,11 +33,9 @@ body {
     text-align: center;
 }
 
-.banner h2 {
-    color: gold;
-}
+.banner h2 { color: gold; }
 
-/* Product grid */
+/* PRODUCTS */
 .products {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -60,22 +55,18 @@ body {
     object-fit: cover;
 }
 
-.product p {
-    margin: 5px;
-}
+.product p { margin: 5px; }
 
 .price {
     color: gold;
     font-weight: bold;
 }
 
-/* Detail */
 .detail img {
     width: 100%;
     border-radius: 10px;
 }
 
-/* Profile */
 .profile {
     text-align: center;
 }
@@ -85,7 +76,6 @@ body {
     border-radius: 50%;
 }
 
-/* Bottom menu */
 .footer {
     position: fixed;
     bottom: 0;
@@ -120,37 +110,59 @@ body {
         <p>Đẳng cấp - Sang trọng</p>
     </div>
 
-    <h3>Giới thiệu</h3>
-    <p>Wine chuyên cung cấp rượu nhập khẩu chính hãng.</p>
+    <h3>🍷 Về Wine Shop</h3>
+    <p>
+        Wine là cửa hàng chuyên cung cấp các loại rượu nhập khẩu chính hãng
+        từ Pháp, Scotland, Nga và nhiều quốc gia nổi tiếng khác.
+        Chúng tôi cam kết mang đến trải nghiệm đẳng cấp với chất lượng tốt nhất.
+    </p>
+
+    <h3>📜 Lịch sử rượu</h3>
+    <p>
+        Rượu đã xuất hiện từ hàng ngàn năm trước trong các nền văn minh cổ đại như Ai Cập và Hy Lạp.
+        Qua thời gian, rượu không chỉ là thức uống mà còn là biểu tượng của sự sang trọng và đẳng cấp.
+    </p>
+
+    <h3>🥃 Các loại rượu phổ biến</h3>
+    <p>
+        • Rượu vang: nhẹ nhàng, tinh tế<br>
+        • Whisky: mạnh mẽ, nam tính<br>
+        • Vodka: tinh khiết, dễ uống<br>
+        • Gin: hương thảo mộc đặc trưng
+    </p>
 </div>
 
 <!-- PRODUCTS -->
-<div class="products">
+<div id="products" class="section">
+    <h3>Sản phẩm</h3>
 
-    <div class="product" onclick="showDetail('Rượu vang','anh1.png','450000')">
-        <img src="anh1.png">
-        <p>Rượu vang</p>
-        <p class="price">450.000đ</p>
+    <div class="products">
+
+        <div class="product" onclick="showDetail('Rượu vang','anh1.png','450000')">
+            <img src="anh1.png">
+            <p>Rượu vang</p>
+            <p class="price">450.000đ</p>
+        </div>
+
+        <div class="product" onclick="showDetail('Whisky','anh2.png','890000')">
+            <img src="anh2.png">
+            <p>Whisky</p>
+            <p class="price">890.000đ</p>
+        </div>
+
+        <div class="product" onclick="showDetail('Vodka','anh3.png','300000')">
+            <img src="anh3.png">
+            <p>Vodka</p>
+            <p class="price">300.000đ</p>
+        </div>
+
+        <div class="product" onclick="showDetail('Gin','anh4.png','400000')">
+            <img src="anh4.png">
+            <p>Gin</p>
+            <p class="price">400.000đ</p>
+        </div>
+
     </div>
-
-    <div class="product" onclick="showDetail('Whisky','anh2.png','890000')">
-        <img src="anh2.png">
-        <p>Whisky</p>
-        <p class="price">890.000đ</p>
-    </div>
-
-    <div class="product" onclick="showDetail('Vodka','anh3.png','300000')">
-        <img src="anh3.png">
-        <p>Vodka</p>
-        <p class="price">300.000đ</p>
-    </div>
-
-    <div class="product" onclick="showDetail('Gin','anh4.png','400000')">
-        <img src="anh4.png">
-        <p>Gin</p>
-        <p class="price">400.000đ</p>
-    </div>
-
 </div>
 
 <!-- DETAIL -->
@@ -159,7 +171,7 @@ body {
     <img id="d-img">
     <p id="d-price" class="price"></p>
 
-    <button onclick="buy()">Mua ngay</button>
+    <button onclick="buy()">🛒 Mua ngay</button>
     <br><br>
     <button onclick="showPage('products')">← Quay lại</button>
 </div>
