@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTeam Mobile</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0d0d0d;
+    color: white;
+}
+
+/* Header */
+.header {
+    background: #000;
+    padding: 15px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: gold;
+}
+
+/* Section */
+.section { display: none; padding: 15px; }
+.active { display: block; }
+
+/* Banner */
+.banner {
+    background: url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03');
+    background-size: cover;
+    padding: 50px 15px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.banner h2 {
+    color: gold;
+}
+
+/* Product grid */
+.products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.product {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.product p {
+    margin: 5px;
+}
+
+.price {
+    color: gold;
+    font-weight: bold;
+}
+
+/* Detail */
+.detail img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Profile */
+.profile {
+    text-align: center;
+}
+
+.avatar {
+    width: 100px;
+    border-radius: 50%;
+}
+
+/* Bottom menu */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+}
+
+.footer button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 13px;
+}
+
+.footer button:hover {
+    color: gold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🍷 HTeam</div>
+
+<!-- HOME -->
+<div id="home" class="section active">
+    <div class="banner">
+        <h2>Rượu cao cấp</h2>
+        <p>Đẳng cấp - Sang trọng</p>
+    </div>
+
+    <h3>Giới thiệu</h3>
+    <p>HTeam chuyên cung cấp rượu nhập khẩu chính hãng.</p>
+</div>
+
+<!-- PRODUCTS -->
+<div class="products">
+
+    <div class="product" onclick="showDetail('Rượu vang','anh1.png','450000')">
+        <img src="anh1.png">
+        <p>Rượu vang</p>
+        <p class="price">450.000đ</p>
+    </div>
+
+    <div class="product" onclick="showDetail('Whisky','anh2.png','890000')">
+        <img src="anh2.png">
+        <p>Whisky</p>
+        <p class="price">890.000đ</p>
+    </div>
+
+    <div class="product" onclick="showDetail('Vodka','anh3.png','300000')">
+        <img src="anh3.png">
+        <p>Vodka</p>
+        <p class="price">300.000đ</p>
+    </div>
+
+    <div class="product" onclick="showDetail('Gin','anh4.png','400000')">
+        <img src="anh4.png">
+        <p>Gin</p>
+        <p class="price">400.000đ</p>
+    </div>
+
+</div>
+
+<!-- DETAIL -->
+<div id="detail" class="section detail">
+    <h3 id="d-name"></h3>
+    <img id="d-img">
+    <p id="d-price" class="price"></p>
+
+    <button onclick="buy()">Mua ngay</button>
+    <br><br>
+    <button onclick="showPage('products')">← Quay lại</button>
+</div>
+
+<!-- PROFILE -->
+<div id="info" class="section profile">
+    <h3>Thông tin</h3>
+    <img class="avatar" src="https://i.pravatar.cc/150">
+    <p>HTeam User</p>
+    <p id="money">Số dư: 2.000.000đ</p>
+</div>
+
+<!-- MENU -->
+<div class="footer">
+    <button onclick="showPage('products')">🛒</button>
+    <button onclick="showPage('home')">🏠</button>
+    <button onclick="showPage('info')">👤</button>
+</div>
+
+<script>
+let balance = 2000000;
+let currentPrice = 0;
+
+function showPage(page) {
+    document.querySelectorAll('.section').forEach(sec => {
+        sec.classList.remove('active');
+    });
+    document.getElementById(page).classList.add('active');
+}
+
+function showDetail(name, img, price) {
+    document.getElementById("d-name").innerText = name;
+    document.getElementById("d-img").src = img;
+    document.getElementById("d-price").innerText = price + "đ";
+
+    currentPrice = parseInt(price);
+
+    showPage("detail");
+}
+
+function buy() {
+    if(balance >= currentPrice){
+        balance -= currentPrice;
+        document.getElementById("money").innerText =
+            "Số dư: " + balance.toLocaleString() + "đ";
+        alert("Mua thành công!");
+    } else {
+        alert("Không đủ tiền!");
+    }
+}
+</script>
+
+</body>
+</html>
