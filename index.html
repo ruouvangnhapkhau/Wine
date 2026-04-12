@@ -46,7 +46,6 @@
             text-decoration: none;
         }
 
-        /* ✅ MENU ĐÃ SỬA */
         .menu {
             position: fixed;
             top: 0;
@@ -76,7 +75,6 @@
             left: 0;
         }
 
-        /* ✅ OVERLAY */
         #overlay {
             position: fixed;
             top: 0;
@@ -201,16 +199,13 @@
     </div>
 </div>
 
-<!-- MENU -->
 <div class="menu" id="menu">
     <a href="#" onclick="showCart()">Giỏ hàng</a>
     <a href="#" onclick="showContactInfo()">Thông tin liên hệ</a>
 </div>
 
-<!-- ✅ OVERLAY -->
 <div id="overlay" onclick="toggleMenu()"></div>
 
-<!-- HOME -->
 <div id="home" class="section active">
     <div class="banner">
         <h2>Rượu cao cấp</h2>
@@ -251,7 +246,6 @@ Có nguồn gốc từ Mexico, được làm từ cây thùa xanh. Tequila có v
     </p>
 </div>
 
-<!-- PRODUCTS -->
 <div id="products" class="section">
     <h3>Sản phẩm</h3>
     <div class="products">
@@ -292,11 +286,10 @@ Có nguồn gốc từ Mexico, được làm từ cây thùa xanh. Tequila có v
     <button onclick="showPage('products')">← Quay lại</button>
 </div>
 
-<!-- PROFILE -->
 <div id="info" class="section profile">
     <h3>Thông tin</h3>
     <img class="avatar" src="https://i.postimg.cc/bNcg2Gsv/Messenger-creation-2167886443955803.jpg">
-    <p>yenvi2k8</p>
+    <p>champagne</p>
     <p id="money">Số dư: 2.000.000đ</p>
 </div>
 
@@ -338,7 +331,6 @@ function buy() {
     }
 }
 
-/* ✅ MENU FIX */
 function toggleMenu() {
     document.getElementById('menu').classList.toggle('active');
     document.getElementById('overlay').classList.toggle('active');
