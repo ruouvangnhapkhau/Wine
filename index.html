@@ -9,13 +9,13 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #007bff; /* Blue background */
+            background: #007bff;
             color: white;
             height: 100%;
         }
 
         .header {
-            background: #003366; /* Dark Blue header */
+            background: #003366;
             padding: 15px;
             text-align: center;
             font-size: 20px;
@@ -46,31 +46,52 @@
             text-decoration: none;
         }
 
+        /* ✅ MENU ĐÃ SỬA */
         .menu {
-            display: none;
-            position: absolute;
-            top: 50px;
-            left: 0;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
             background-color: #003366;
-            width: 100%;
-            padding: 20px;
-            color: white;
-            text-align: center;
+            padding-top: 60px;
+            transition: 0.3s;
+            z-index: 999;
         }
 
         .menu a {
             display: block;
-            padding: 10px;
+            padding: 15px;
             text-decoration: none;
             color: white;
             font-size: 18px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
         }
 
         .menu a:hover {
             background-color: #007bff;
         }
 
-        /* Icon contact di động */
+        .menu.active {
+            left: 0;
+        }
+
+        /* ✅ OVERLAY */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none;
+            z-index: 998;
+        }
+
+        #overlay.active {
+            display: block;
+        }
+
         .icon-contact {
             position: fixed;
             bottom: 20px;
@@ -91,7 +112,6 @@
             background-color: #007bff;
         }
 
-        /* Các phần khác của trang */
         .section {
             display: none;
             padding: 15px;
@@ -159,12 +179,11 @@
             color: #007bff;
         }
 
-        /* Cập nhật Avatar */
         .avatar {
-            width: 80px; /* Giảm kích thước ảnh xuống còn 80px */
-            height: 80px; /* Đảm bảo ảnh vuông */
-            border-radius: 50%; /* Đảm bảo ảnh có hình tròn */
-            object-fit: cover; /* Đảm bảo ảnh được cắt cân đối */
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -178,14 +197,18 @@
         <div></div>
     </div>
     <div class="logo">
-        <a href="#home">🍷 WINE</a>
+        <a href="#home">WINE</a>
     </div>
 </div>
 
+<!-- MENU -->
 <div class="menu" id="menu">
     <a href="#" onclick="showCart()">Giỏ hàng</a>
     <a href="#" onclick="showContactInfo()">Thông tin liên hệ</a>
 </div>
+
+<!-- ✅ OVERLAY -->
+<div id="overlay" onclick="toggleMenu()"></div>
 
 <!-- HOME -->
 <div id="home" class="section active">
@@ -195,31 +218,23 @@
     </div>
 
     <h3>🍷 Về Wine Shop</h3>
-    <p>
-        Wine là cửa hàng chuyên cung cấp các loại rượu nhập khẩu chính hãng
-        từ Pháp, Scotland, Nga và nhiều quốc gia nổi tiếng khác.
-        Chúng tôi cam kết mang đến trải nghiệm đẳng cấp với chất lượng tốt nhất.
-    </p>
+    <p>Wine là cửa hàng chuyên cung cấp các loại rượu nhập khẩu chính hãng...</p>
 
     <h3>📜 Lịch sử rượu</h3>
-    <p>
-        Rượu đã xuất hiện từ hàng ngàn năm trước trong các nền văn minh cổ đại như Ai Cập và Hy Lạp.
-        Qua thời gian, rượu không chỉ là thức uống mà còn là biểu tượng của sự sang trọng và đẳng cấp.
-    </p>
+    <p>Rượu đã xuất hiện từ hàng ngàn năm trước...</p>
 
     <h3>🥃 Các loại rượu phổ biến</h3>
     <p>
-        • Rượu vang: nhẹ nhàng, tinh tế<br>
-        • Whisky: mạnh mẽ, nam tính<br>
-        • Vodka: tinh khiết, dễ uống<br>
-        • Gin: hương thảo mộc đặc trưng
+        • Rượu vang<br>
+        • Whisky<br>
+        • Vodka<br>
+        • Gin
     </p>
 </div>
 
 <!-- PRODUCTS -->
 <div id="products" class="section">
     <h3>Sản phẩm</h3>
-
     <div class="products">
         <div class="product" onclick="showDetail('Rượu vang','anh1.png','450000')">
             <img src="anh1.png">
@@ -261,27 +276,22 @@
 <!-- PROFILE -->
 <div id="info" class="section profile">
     <h3>Thông tin</h3>
-    <img class="avatar" src="https://i.postimg.cc/q7xZJ7z8/FB-IMG-1775926253299.jpg">
-    <p>HTeam User</p>
+    <img class="avatar" src="https://i.postimg.cc/bNcg2Gsv/Messenger-creation-2167886443955803.jpg">
+    <p>yenvi2k8</p>
     <p id="money">Số dư: 2.000.000đ</p>
 </div>
 
-<!-- MENU -->
 <div class="footer">
     <button onclick="showPage('products')">🛒</button>
     <button onclick="showPage('home')">🏠</button>
     <button onclick="showPage('info')">👤</button>
 </div>
 
-<!-- CONTACT ICON -->
-<div class="icon-contact" id="contactIcon">
-    📞
-</div>
+<div class="icon-contact" id="contactIcon">📞</div>
 
 <script>
 let balance = 2000000;
 let currentPrice = 0;
-let isMoving = false;
 
 function showPage(page) {
     document.querySelectorAll('.section').forEach(sec => {
@@ -294,9 +304,7 @@ function showDetail(name, img, price) {
     document.getElementById("d-name").innerText = name;
     document.getElementById("d-img").src = img;
     document.getElementById("d-price").innerText = price + "đ";
-
     currentPrice = parseInt(price);
-
     showPage("detail");
 }
 
@@ -311,44 +319,20 @@ function buy() {
     }
 }
 
-// Toggle Hamburger menu
+/* ✅ MENU FIX */
 function toggleMenu() {
     document.getElementById('menu').classList.toggle('active');
+    document.getElementById('overlay').classList.toggle('active');
 }
 
-// Show Cart
 function showCart() {
     alert("Giỏ hàng trống");
 }
 
-// Show Contact Info
 function showContactInfo() {
     alert("Thông tin liên hệ: Facebook, SĐT, Email.");
 }
-
-// Di chuyển icon 📞 khi nhấn chuột
-document.getElementById('contactIcon').addEventListener('mousedown', (e) => {
-    const icon = e.target;
-    let offsetX = e.clientX - icon.getBoundingClientRect().left;
-    let offsetY = e.clientY - icon.getBoundingClientRect().top;
-
-    // Di chuyển icon
-    const moveIcon = (moveEvent) => {
-        icon.style.left = (moveEvent.clientX - offsetX) + 'px';
-        icon.style.top = (moveEvent.clientY - offsetY) + 'px';
-    };
-
-    // Dừng di chuyển khi chuột thả
-    const stopMove = () => {
-        document.removeEventListener('mousemove', moveIcon);
-        document.removeEventListener('mouseup', stopMove);
-    };
-
-    // Thêm sự kiện di chuyển chuột
-    document.addEventListener('mousemove', moveIcon);
-    document.addEventListener('mouseup', stopMove);
-});
 </script>
 
 </body>
-        </html>
+</html>
