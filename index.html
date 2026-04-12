@@ -1,172 +1,172 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wine</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #007bff; /* Blue background */
-    color: white;
-    height: 100%;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #007bff; /* Blue background */
+            color: white;
+            height: 100%;
+        }
 
-.header {
-    background: #003366; /* Dark Blue header */
-    padding: 15px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    position: relative;
-}
+        .header {
+            background: #003366; /* Dark Blue header */
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            position: relative;
+        }
 
-.header .hamburger {
-    position: absolute;
-    left: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-}
+        .header .hamburger {
+            position: absolute;
+            left: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            cursor: pointer;
+        }
 
-.header .hamburger div {
-    width: 30px;
-    height: 4px;
-    background-color: white;
-}
+        .header .hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: white;
+        }
 
-.header .logo a {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: none;
-}
+        .header .logo a {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-.menu {
-    display: none;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    background-color: #003366;
-    width: 100%;
-    padding: 20px;
-    color: white;
-    text-align: center;
-}
+        .menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            background-color: #003366;
+            width: 100%;
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
 
-.menu a {
-    display: block;
-    padding: 10px;
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
+        .menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
 
-.menu a:hover {
-    background-color: #007bff;
-}
+        .menu a:hover {
+            background-color: #007bff;
+        }
 
-/* Icon contact di động */
-.icon-contact {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: #003366;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.5s ease-in-out;
-    z-index: 100;
-}
+        /* Icon contact di động */
+        .icon-contact {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #003366;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+            z-index: 1000;
+        }
 
-.icon-contact:hover {
-    background-color: #007bff;
-}
+        .icon-contact:hover {
+            background-color: #007bff;
+        }
 
-/* Các phần khác của trang */
-.section {
-    display: none;
-    padding: 15px;
-    background-color: #ffffff;
-    color: #000;
-    z-index: 5;
-}
+        /* Các phần khác của trang */
+        .section {
+            display: none;
+            padding: 15px;
+            background-color: #ffffff;
+            color: #000;
+            z-index: 5;
+        }
 
-.active { display: block; }
+        .active { display: block; }
 
-.banner {
-    background: url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03');
-    background-size: cover;
-    padding: 50px 15px;
-    border-radius: 12px;
-    text-align: center;
-    color: white;
-}
+        .banner {
+            background: url('https://images.unsplash.com/photo-1510626176961-4b57d4fbad03');
+            background-size: cover;
+            padding: 50px 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+        }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
 
-.product {
-    background: #f1f1f1;
-    border-radius: 12px;
-    overflow: hidden;
-    cursor: pointer;
-}
+        .product {
+            background: #f1f1f1;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
 
-.product img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-}
+        .product img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
 
-.product p { margin: 5px; }
+        .product p { margin: 5px; }
 
-.price {
-    color: #007bff;
-    font-weight: bold;
-}
+        .price {
+            color: #007bff;
+            font-weight: bold;
+        }
 
-.footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background: #003366;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    z-index: 8;
-}
+        .footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #003366;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            z-index: 8;
+        }
 
-.footer button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 13px;
-}
+        .footer button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 13px;
+        }
 
-.footer button:hover {
-    color: #007bff;
-}
+        .footer button:hover {
+            color: #007bff;
+        }
 
-/* Cập nhật Avatar */
-.avatar {
-    width: 80px; /* Giảm kích thước ảnh xuống còn 80px */
-    height: 80px; /* Đảm bảo ảnh vuông */
-    border-radius: 50%; /* Đảm bảo ảnh có hình tròn */
-    object-fit: cover; /* Đảm bảo ảnh được cắt cân đối */
-}
-</style>
+        /* Cập nhật Avatar */
+        .avatar {
+            width: 80px; /* Giảm kích thước ảnh xuống còn 80px */
+            height: 80px; /* Đảm bảo ảnh vuông */
+            border-radius: 50%; /* Đảm bảo ảnh có hình tròn */
+            object-fit: cover; /* Đảm bảo ảnh được cắt cân đối */
+        }
+    </style>
 </head>
 
 <body>
@@ -178,7 +178,7 @@ body {
         <div></div>
     </div>
     <div class="logo">
-        <a href="#home"> WINE</a>
+        <a href="#home">🍷 WINE</a>
     </div>
 </div>
 
@@ -326,13 +326,13 @@ function showContactInfo() {
     alert("Thông tin liên hệ: Facebook, SĐT, Email.");
 }
 
-// Move the icon 📞 when clicked
+// Di chuyển icon 📞 khi nhấn chuột
 document.getElementById('contactIcon').addEventListener('mousedown', (e) => {
     const icon = e.target;
     let offsetX = e.clientX - icon.getBoundingClientRect().left;
     let offsetY = e.clientY - icon.getBoundingClientRect().top;
 
-    // Xử lý việc di chuyển icon
+    // Di chuyển icon
     const moveIcon = (moveEvent) => {
         icon.style.left = (moveEvent.clientX - offsetX) + 'px';
         icon.style.top = (moveEvent.clientY - offsetY) + 'px';
@@ -351,4 +351,4 @@ document.getElementById('contactIcon').addEventListener('mousedown', (e) => {
 </script>
 
 </body>
-    </html>
+        </html>
