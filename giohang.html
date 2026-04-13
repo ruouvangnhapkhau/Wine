@@ -2,116 +2,68 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ MOBILE -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Giỏ hàng</title>
 
 <style>
-body {
-    margin:0;
-    font-family:Arial;
-    background:#007bff;
-    color:white;
-    text-align:center;
-    padding-bottom:70px;
-}
+body { margin:0; font-family:Arial; background:#007bff; color:white; padding-bottom:70px; }
 
-/* HEADER */
-.header {
-    background:#003366;
-    padding:15px;
-    position:relative;
-}
+.header { background:#003366; padding:15px; text-align:center; position:relative; }
+.hamburger { position:absolute; left:15px; cursor:pointer; font-size:20px; }
 
-.hamburger {
-    position:absolute;
-    left:15px;
-    cursor:pointer;
-    font-size:20px;
-}
-
-/* MENU */
 .menu {
-    position:fixed;
-    left:-70%;
-    top:0;
-    width:70%;
-    height:100%;
-    background:#003366;
-    padding-top:60px;
-    transition:0.3s;
-    z-index:1000;
+    position:fixed; left:-70%; top:0;
+    width:70%; height:100%;
+    background:#003366; padding-top:60px;
+    transition:0.3s; z-index:1000;
 }
-
-.menu a {
-    display:block;
-    padding:15px;
-    color:white;
-    text-decoration:none;
-}
-
-.menu a:hover {
-    background:#007bff;
-}
-
+.menu a { display:block; padding:15px; color:white; text-decoration:none; }
 .menu.active { left:0; }
 
-/* OVERLAY */
 #overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
+    position:fixed; width:100%; height:100%;
     background:rgba(0,0,0,0.5);
-    display:none;
-    z-index:999;
+    display:none; z-index:999;
 }
-
 #overlay.active { display:block; }
 
-/* CART BOX */
 .cart-box {
     background:white;
     color:black;
     margin:15px;
-    padding:20px;
+    padding:15px;
     border-radius:12px;
 }
 
-/* EMPTY TEXT */
-.empty {
-    font-size:16px;
-    color:#666;
+.item {
+    background:#f1f1f1;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:10px;
 }
 
-/* BUTTON */
+.item img {
+    width:100%;
+    border-radius:10px;
+}
+
 button {
-    margin-top:10px;
-    padding:10px;
+    margin-top:5px;
+    padding:8px;
     width:100%;
     border:none;
     border-radius:8px;
     background:#003366;
     color:white;
-    font-size:16px;
 }
 
-/* FOOTER */
 .footer {
-    position:fixed;
-    bottom:0;
-    width:100%;
+    position:fixed; bottom:0; width:100%;
     background:#003366;
-    display:flex;
-    justify-content:space-around;
+    display:flex; justify-content:space-around;
     padding:10px 0;
 }
-
-.footer button {
-    background:none;
-    font-size:18px;
-}
+.footer button { background:none; font-size:18px; }
 </style>
 </head>
 
@@ -119,11 +71,7 @@ button {
 
 <div class="header">
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <h2>
-    <a href="index.html" style="color:white; text-decoration:none;">
-        WINE
-    </a>
-</h2>
+    <h2><a href="index.html" style="color:white;text-decoration:none;">WINE</a></h2>
 </div>
 
 <div id="menu" class="menu">
@@ -135,18 +83,14 @@ button {
 
 <h2>🛒 Giỏ hàng</h2>
 
-<div class="cart-box">
-    <p class="empty">Giỏ hàng của bạn đang trống</p>
-
-    <button onclick="location.href='sanpham.html'">
-        Mua sản phẩm
-    </button>
-</div>
+<div id="cart-list"></div>
+<p id="total"></p>
+<button onclick="clearCart()">Xóa tất cả</button>
 
 <div class="footer">
-    <button onclick="location.href='sanpham.html'">🛒</button>
-    <button onclick="location.href='index.html'">🏠</button>
-    <button onclick="location.href='info.html'">👤</button>
+<button onclick="location.href='sanpham.html'">🛒</button>
+<button onclick="location.href='index.html'">🏠</button>
+<button onclick="location.href='info.html'">👤</button>
 </div>
 
 <script>
@@ -154,6 +98,49 @@ function toggleMenu(){
     menu.classList.toggle("active");
     overlay.classList.toggle("active");
 }
+
+function loadCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let html = "";
+    let total = 0;
+
+    if(cart.length === 0){
+        html = "<div class='cart-box'>Giỏ hàng trống</div>";
+    } else {
+        cart.forEach((item, index) => {
+            total += item.price;
+
+            html += `
+            <div class="cart-box">
+                <div class="item">
+                    <img src="${item.img}">
+                    <p>${item.name}</p>
+                    <p>${item.price.toLocaleString()}đ</p>
+                    <button onclick="removeItem(${index})">Xóa</button>
+                </div>
+            </div>
+            `;
+        });
+    }
+
+    document.getElementById("cart-list").innerHTML = html;
+    document.getElementById("total").innerText =
+        "Tổng: " + total.toLocaleString() + "đ";
+}
+
+function removeItem(index){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.splice(index,1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    loadCart();
+}
+
+function clearCart(){
+    localStorage.removeItem("cart");
+    loadCart();
+}
+
+loadCart();
 </script>
 
 </body>
