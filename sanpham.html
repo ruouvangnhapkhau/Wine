@@ -2,72 +2,31 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ QUAN TRỌNG -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sản phẩm</title>
 
 <style>
-body {
-    margin:0;
-    font-family:Arial;
-    background:#007bff;
-    color:white;
-    padding-bottom:70px;
-}
+body { margin:0; font-family:Arial; background:#007bff; color:white; padding-bottom:70px; }
 
-/* HEADER */
-.header {
-    background:#003366;
-    padding:15px;
-    text-align:center;
-    position:relative;
-}
+.header { background:#003366; padding:15px; text-align:center; position:relative; }
+.hamburger { position:absolute; left:15px; cursor:pointer; font-size:20px; }
 
-.hamburger {
-    position:absolute;
-    left:15px;
-    cursor:pointer;
-    font-size:20px;
-}
-
-/* MENU */
 .menu {
-    position:fixed;
-    left:-70%;
-    top:0;
-    width:70%;
-    height:100%;
-    background:#003366;
-    padding-top:60px;
-    transition:0.3s;
-    z-index:1000;
+    position:fixed; left:-70%; top:0;
+    width:70%; height:100%;
+    background:#003366; padding-top:60px;
+    transition:0.3s; z-index:1000;
 }
-.menu a {
-    display:block;
-    padding:15px;
-    color:white;
-    text-decoration:none;
-    font-size:16px;
-}
-.menu a:hover {
-    background:#007bff;
-}
+.menu a { display:block; padding:15px; color:white; text-decoration:none; }
 .menu.active { left:0; }
 
-/* OVERLAY */
 #overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
+    position:fixed; width:100%; height:100%;
     background:rgba(0,0,0,0.5);
-    display:none;
-    z-index:999;
+    display:none; z-index:999;
 }
 #overlay.active { display:block; }
 
-/* GRID SẢN PHẨM */
 .products {
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -75,85 +34,43 @@ body {
     padding:10px;
 }
 
-/* CARD */
 .product {
     background:#f1f1f1;
     border-radius:12px;
     overflow:hidden;
     color:black;
-    transition:0.2s;
 }
 
-.product:active {
-    transform:scale(0.97);
-}
-
-/* ẢNH */
 .product img {
     width:100%;
     height:120px;
     object-fit:cover;
 }
 
-/* TEXT */
-.product p {
-    margin:5px;
-    font-size:14px;
-}
+.product p { margin:5px; }
+.price { color:#007bff; font-weight:bold; }
 
-.price {
-    color:#007bff;
-    font-weight:bold;
-}
-
-/* SECTION */
-.section {
-    display:none;
-    background:white;
-    color:black;
-    padding:15px;
-}
+.section { display:none; background:white; color:black; padding:15px; }
 .active { display:block; }
 
-/* DETAIL */
-#detail img {
-    border-radius:10px;
-    margin:10px 0;
-}
-
-/* BUTTON */
 button {
     padding:10px;
     margin:5px 0;
     width:100%;
-    font-size:16px;
     border:none;
     border-radius:8px;
     background:#003366;
     color:white;
+    font-size:16px;
 }
 
-/* FOOTER */
 .footer {
-    position:fixed;
-    bottom:0;
-    width:100%;
+    position:fixed; bottom:0; width:100%;
     background:#003366;
-    display:flex;
-    justify-content:space-around;
+    display:flex; justify-content:space-around;
     padding:10px 0;
 }
-
-.footer button {
-    background:none;
-    font-size:18px;
-}
-
-/* RESPONSIVE */
-@media (max-width:600px){
-    h2 { font-size:18px; }
-    h3 { font-size:16px; }
-}
+.footer button { background:none; font-size:18px; }
 </style>
 </head>
 
@@ -161,11 +78,7 @@ button {
 
 <div class="header">
     <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <h2>
-    <a href="index.html" style="color:white; text-decoration:none;">
-        WINE
-    </a>
-</h2>
+    <h2><a href="index.html" style="color:white;text-decoration:none;">WINE</a></h2>
 </div>
 
 <div id="menu" class="menu">
@@ -175,32 +88,31 @@ button {
 
 <div id="overlay" onclick="toggleMenu()"></div>
 
-<!-- DANH SÁCH -->
 <div id="products" class="section active">
 <h3>Sản phẩm</h3>
 
 <div class="products">
 
-<div class="product" onclick="showDetail('Rượu vang','anh1.png','450000')">
-<img src="anh1.png">
+<div class="product" onclick="showDetail('Rượu vang','https://i.postimg.cc/0jZQ9zBy/anh1.png','450000','13%','750ml','Pháp')">
+<img src="https://i.postimg.cc/0jZQ9zBy/anh1.png">
 <p>Rượu vang</p>
 <p class="price">450.000đ</p>
 </div>
 
-<div class="product" onclick="showDetail('Whisky','anh2.png','890000')">
-<img src="anh2.png">
+<div class="product" onclick="showDetail('Whisky','https://i.postimg.cc/9QwWngCq/anh2.jpg','890000','40%','700ml','Scotland')">
+<img src="https://i.postimg.cc/9QwWngCq/anh2.jpg">
 <p>Whisky</p>
 <p class="price">890.000đ</p>
 </div>
 
-<div class="product" onclick="showDetail('Vodka','anh3.png','300000')">
-<img src="anh3.png">
+<div class="product" onclick="showDetail('Vodka','https://i.postimg.cc/gJsdZfHk/anh3.jpg','300000','40%','750ml','Nga')">
+<img src="https://i.postimg.cc/gJsdZfHk/anh3.jpg">
 <p>Vodka</p>
 <p class="price">300.000đ</p>
 </div>
 
-<div class="product" onclick="showDetail('Gin','anh4.png','400000')">
-<img src="anh4.png">
+<div class="product" onclick="showDetail('Gin','https://i.postimg.cc/VvH87nh9/anh4.jpg','400000','37.5%','700ml','Anh')">
+<img src="https://i.postimg.cc/VvH87nh9/anh4.jpg">
 <p>Gin</p>
 <p class="price">400.000đ</p>
 </div>
@@ -208,17 +120,16 @@ button {
 </div>
 </div>
 
-<!-- CHI TIẾT -->
 <div id="detail" class="section">
 <h3 id="d-name"></h3>
 <img id="d-img" width="100%">
 <p id="d-price" class="price"></p>
+<p id="d-info"></p>
 
-<button onclick="buy()">🛒 Mua ngay</button>
+<button onclick="addToCart()">🛒 Thêm vào giỏ</button>
 <button onclick="showPage('products')">← Quay lại</button>
 </div>
 
-<!-- FOOTER -->
 <div class="footer">
 <button onclick="location.href='sanpham.html'">🛒</button>
 <button onclick="location.href='index.html'">🏠</button>
@@ -226,7 +137,6 @@ button {
 </div>
 
 <script>
-let balance = localStorage.getItem("money") || 2000000;
 let currentPrice = 0;
 
 function toggleMenu(){
@@ -239,22 +149,33 @@ function showPage(p){
     document.getElementById(p).classList.add('active');
 }
 
-function showDetail(name,img,price){
-    d-name.innerText=name;
-    d-img.src=img;
-    d-price.innerText=price+"đ";
-    currentPrice=parseInt(price);
+function showDetail(name,img,price,alcohol,volume,origin){
+    document.getElementById("d-name").innerText = name;
+    document.getElementById("d-img").src = img;
+    document.getElementById("d-price").innerText = price + "đ";
+
+    document.getElementById("d-info").innerHTML =
+        "<b>Nồng độ:</b> " + alcohol + "<br>" +
+        "<b>Dung tích:</b> " + volume + "<br>" +
+        "<b>Xuất xứ:</b> " + origin;
+
+    currentPrice = parseInt(price);
     showPage("detail");
 }
 
-function buy(){
-    if(balance >= currentPrice){
-        balance -= currentPrice;
-        localStorage.setItem("money", balance);
-        alert("Mua thành công!");
-    } else {
-        alert("Không đủ tiền!");
-    }
+function addToCart(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let product = {
+        name: document.getElementById("d-name").innerText,
+        price: currentPrice,
+        img: document.getElementById("d-img").src
+    };
+
+    cart.push(product);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Đã thêm vào giỏ hàng!");
 }
 </script>
 
