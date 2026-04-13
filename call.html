@@ -2,16 +2,156 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+
+<!-- ✅ MOBILE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Liên hệ</title>
+
+<style>
+body {
+    margin:0;
+    font-family:Arial;
+    background:#007bff;
+    color:white;
+    text-align:center;
+    padding-bottom:70px;
+}
+
+/* HEADER */
+.header {
+    background:#003366;
+    padding:15px;
+    position:relative;
+}
+
+.hamburger {
+    position:absolute;
+    left:15px;
+    cursor:pointer;
+    font-size:20px;
+}
+
+/* MENU */
+.menu {
+    position:fixed;
+    left:-70%;
+    top:0;
+    width:70%;
+    height:100%;
+    background:#003366;
+    padding-top:60px;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.menu a {
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+}
+
+.menu a:hover {
+    background:#007bff;
+}
+
+.menu.active { left:0; }
+
+/* OVERLAY */
+#overlay {
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    z-index:999;
+}
+
+#overlay.active { display:block; }
+
+/* CONTACT BOX */
+.contact-box {
+    background:white;
+    color:black;
+    margin:15px;
+    padding:20px;
+    border-radius:12px;
+}
+
+.contact-box p {
+    font-size:15px;
+    margin:10px 0;
+}
+
+/* BUTTON */
+button {
+    margin-top:10px;
+    padding:10px;
+    width:100%;
+    border:none;
+    border-radius:8px;
+    background:#003366;
+    color:white;
+    font-size:16px;
+}
+
+/* FOOTER */
+.footer {
+    position:fixed;
+    bottom:0;
+    width:100%;
+    background:#003366;
+    display:flex;
+    justify-content:space-around;
+    padding:10px 0;
+}
+
+.footer button {
+    background:none;
+    font-size:18px;
+}
+</style>
 </head>
-<body style="font-family:Arial;text-align:center;background:#007bff;color:white">
 
-<h2>📞 Thông tin liên hệ</h2>
+<body>
 
-<p>Email: ngyenvi0712@gmail.com</p>
-<p>Phone: 0123456789</p>
+<div class="header">
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+    <h2>WINE</h2>
+</div>
 
-<button onclick="location.href='index.html'">Quay về</button>
+<div id="menu" class="menu">
+    <a href="giohang.html">Giỏ hàng</a>
+    <a href="call.html">Thông tin liên hệ</a>
+</div>
+
+<div id="overlay" onclick="toggleMenu()"></div>
+
+<h2>📞 Liên hệ</h2>
+
+<div class="contact-box">
+    <p><b>Email:</b> ngyenvi0712@gmail.com</p>
+    <p><b>Phone:</b> 0382992226</p>
+    <p><b>Địa chỉ:</b> Nam Cường,Hưng Yên, Việt Nam</p>
+
+    <button onclick="location.href='index.html'">
+        Quay về trang chủ
+    </button>
+</div>
+
+<div class="footer">
+    <button onclick="location.href='sanpham.html'">🛒</button>
+    <button onclick="location.href='index.html'">🏠</button>
+    <button onclick="location.href='info.html'">👤</button>
+</div>
+
+<script>
+function toggleMenu(){
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
