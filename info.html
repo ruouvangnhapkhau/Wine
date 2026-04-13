@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Thông tin</title>
+<style>
+body { margin:0; font-family:Arial; background:#007bff; color:white; text-align:center; }
+
+.header { background:#003366; padding:15px; position:relative; }
+.hamburger { position:absolute; left:15px; cursor:pointer; }
+
+.menu { position:fixed; left:-250px; top:0; width:250px; height:100%; background:#003366; padding-top:60px; transition:0.3s; }
+.menu a { display:block; padding:15px; color:white; }
+
+.menu.active { left:0; }
+
+.avatar { width:80px; height:80px; border-radius:50%; margin-top:20px; }
+
+.footer {
+position:fixed; bottom:0; width:100%;
+background:#003366; display:flex; justify-content:space-around;
+padding:10px;
+}
+.footer button { color:white; background:none; border:none; }
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+<h2>WINE</h2>
+</div>
+
+<div id="menu" class="menu">
+<a href="giohang.html">Giỏ hàng</a>
+<a href="call.html">Thông tin liên hệ</a>
+</div>
+
+<h2>Thông tin cá nhân</h2>
+
+<img class="avatar" src="https://i.postimg.cc/bNcg2Gsv/Messenger-creation-2167886443955803.jpg">
+<p>champagne</p>
+<p id="money"></p>
+
+<div class="footer">
+<button onclick="location.href='sanpham.html'">🛒</button>
+<button onclick="location.href='index.html'">🏠</button>
+<button onclick="location.href='info.html'">👤</button>
+</div>
+
+<script>
+function toggleMenu(){ menu.classList.toggle("active"); }
+
+let money = localStorage.getItem("money") || 2000000;
+money = Number(money).toLocaleString();
+document.getElementById("money").innerText = "Số dư: " + money + "đ";
+</script>
+
+</body>
+</html>
